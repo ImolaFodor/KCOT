@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e7bfcfe21bab48f39d752e0b5219dfb8" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.DOGADJAJ" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PROJEKAT" Width="1.5" PointX="8.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REZ" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REZERVISANO_SEDISTE" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SALA" Width="1.5" PointX="3" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SEDISTE" Width="1.5" PointX="5.25" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SKOLA" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TIP_DELO" Width="1.5" PointX="3.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TIP_REZ" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TIP_VIP" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TIP_ZAP" Width="1.5" PointX="0.75" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.U_GALERIJI" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.U_SALI" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UMETNICKO_DELO" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VIP" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ZAP" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <AssociationConnector Association="Model.DOGADJAJ_U_GALERIJI_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.DOGADJAJ_U_SALI_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.REZ_SKOLA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.REZ_TIP_REZ_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.REZ_U_SALI_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.REZ_VIP_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.REZ_ZAP_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.REZ_ZAP_FKV1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.REZERVISANO_SEDISTE_REZ_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.REZERVISANO_SEDISTE_SEDISTE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SEDISTE_SALA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.UMETNICKO_DELO_TIP_DELO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.VIP_TIP_VIP_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ZAP_TIP_ZAP_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.DONIRANA_DELA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.IZLOZENA_DELA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.POZVANI" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

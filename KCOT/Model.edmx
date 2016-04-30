@@ -1,0 +1,1317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DOGADJAJ">
+          <Key>
+            <PropertyRef Name="ID_DOG" />
+          </Key>
+          <Property Name="ID_DOG" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="NAZIV" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="GODINA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="KONTAKT_IME" Type="varchar2" MaxLength="20" />
+          <Property Name="KONTAKT_PRZ" Type="varchar2" MaxLength="15" />
+          <Property Name="KONTAKT_BROJ" Type="varchar2" MaxLength="10" />
+          <Property Name="U_GALERIJI_ID_DOG" Type="varchar2" MaxLength="15" />
+          <Property Name="U_SALI_ID_DOG" Type="varchar2" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="DONIRANA_DELA">
+          <Key>
+            <PropertyRef Name="U_GALERIJI_ID_DOG" />
+            <PropertyRef Name="UMETNICKO_DELO_ID_UM_DELO" />
+            <PropertyRef Name="UMETNICKO_DELO_ID_TIP_DELO" />
+          </Key>
+          <Property Name="U_GALERIJI_ID_DOG" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="UMETNICKO_DELO_ID_UM_DELO" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="UMETNICKO_DELO_ID_TIP_DELO" Type="varchar2" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IZLOZENA_DELA">
+          <Key>
+            <PropertyRef Name="U_GALERIJI_ID_DOG" />
+            <PropertyRef Name="UMETNICKO_DELO_ID_UM_DELO" />
+            <PropertyRef Name="UMETNICKO_DELO_ID_TIP_DELO" />
+          </Key>
+          <Property Name="U_GALERIJI_ID_DOG" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="UMETNICKO_DELO_ID_UM_DELO" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="UMETNICKO_DELO_ID_TIP_DELO" Type="varchar2" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POZVANI">
+          <Key>
+            <PropertyRef Name="U_GALERIJI_ID_DOG" />
+            <PropertyRef Name="VIP_ID_TIP_VIP" />
+          </Key>
+          <Property Name="U_GALERIJI_ID_DOG" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="VIP_ID_TIP_VIP" Type="varchar2" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROJEKAT">
+          <Key>
+            <PropertyRef Name="SPR" />
+          </Key>
+          <Property Name="SPR" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUK" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAP" Type="varchar2" MaxLength="30" />
+          <Property Name="NAR" Type="varchar2" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="REZ">
+          <Key>
+            <PropertyRef Name="IDREZ" />
+            <PropertyRef Name="U_SALI_ID_DOG" />
+          </Key>
+          <Property Name="IDREZ" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="REZERVISANO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="PLACENO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="U_SALI_ID_DOG" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="ZAP_ID_ZAP1" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="ZAP_ID_ZAP" Type="varchar2" MaxLength="15" />
+          <Property Name="TIP_REZ_ID_TIP_REZ" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="VIP_TIP_VIP_ID_TIP_VIP" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="SKOLA_ID_SKOLA" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="IME" Type="varchar2" MaxLength="15" />
+          <Property Name="PRZ" Type="varchar2" MaxLength="15" />
+          <Property Name="ZAP_TIP_ZAP_IDTIPZAP1" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="ZAP_TIP_ZAP_IDTIPZAP" Type="varchar2" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="REZERVISANO_SEDISTE">
+          <Key>
+            <PropertyRef Name="ID_REZ_SED" />
+            <PropertyRef Name="SEDISTE_ID_SEDISTE" />
+            <PropertyRef Name="SEDISTE_ID_SALA" />
+            <PropertyRef Name="REZ_IDREZ" />
+            <PropertyRef Name="REZ_ID_DOG" />
+          </Key>
+          <Property Name="ID_REZ_SED" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="SEDISTE_ID_SEDISTE" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="SEDISTE_ID_SALA" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="REZ_IDREZ" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="REZ_ID_DOG" Type="varchar2" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SALA">
+          <Key>
+            <PropertyRef Name="ID_SALA" />
+          </Key>
+          <Property Name="ID_SALA" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="IME" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="BROJ_SEDISTA" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SEDISTE">
+          <Key>
+            <PropertyRef Name="ID_SEDISTE" />
+            <PropertyRef Name="SALA_ID_SALA" />
+          </Key>
+          <Property Name="ID_SEDISTE" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="RED" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="BROJ" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SALA_ID_SALA" Type="varchar2" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SKOLA">
+          <Key>
+            <PropertyRef Name="ID_SKOLA" />
+          </Key>
+          <Property Name="ID_SKOLA" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="NAZIV" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="KONTAKT_IME" Type="varchar2" MaxLength="20" />
+          <Property Name="KONTAKT_BROJ" Type="varchar2" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TIP_DELO">
+          <Key>
+            <PropertyRef Name="ID_TIP_DELO" />
+          </Key>
+          <Property Name="ID_TIP_DELO" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="NAZIV" Type="varchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIP_REZ">
+          <Key>
+            <PropertyRef Name="ID_TIP_REZ" />
+          </Key>
+          <Property Name="ID_TIP_REZ" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="NAZIV" Type="varchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIP_VIP">
+          <Key>
+            <PropertyRef Name="ID_TIP_VIP" />
+          </Key>
+          <Property Name="ID_TIP_VIP" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="NAZIV" Type="varchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIP_ZAP">
+          <Key>
+            <PropertyRef Name="IDTIPZAP" />
+          </Key>
+          <Property Name="IDTIPZAP" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="NAZIV" Type="varchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="U_GALERIJI">
+          <Key>
+            <PropertyRef Name="ID_DOG" />
+          </Key>
+          <Property Name="ID_DOG" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="NAZIV" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="GODINA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="KONTAKT_IME" Type="varchar2" MaxLength="20" />
+          <Property Name="KONTAKT_PRZ" Type="varchar2" MaxLength="15" />
+          <Property Name="KONTAKT_BROJ" Type="varchar2" MaxLength="10" />
+          <Property Name="DATUM" Type="date" Nullable="false" />
+          <Property Name="REALIZOVANO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="VODITELJ_IME" Type="varchar2" MaxLength="20" />
+          <Property Name="VODITELJ_PRZ" Type="varchar2" MaxLength="15" />
+          <Property Name="VODITELJ_BROJ" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="U_SALI">
+          <Key>
+            <PropertyRef Name="ID_DOG" />
+          </Key>
+          <Property Name="ID_DOG" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="NAZIV" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="GODINA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="KONTAKT_IME" Type="varchar2" MaxLength="20" />
+          <Property Name="KONTAKT_PRZ" Type="varchar2" MaxLength="15" />
+          <Property Name="KONTAKT_BROJ" Type="varchar2" MaxLength="10" />
+          <Property Name="DATUM" Type="date" Nullable="false" />
+          <Property Name="REALIZOVANO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ZARADA" Type="number" Precision="38" Scale="0" />
+          <Property Name="POSECENOST" Type="number" Precision="38" Scale="0" />
+          <Property Name="CENA_KARTE" Type="number" Precision="38" Scale="0" />
+          <Property Name="TITL" Type="char" MaxLength="1" />
+          <Property Name="OPREMA" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="UMETNICKO_DELO">
+          <Key>
+            <PropertyRef Name="ID_UM_DELO" />
+            <PropertyRef Name="TIP_DELO_ID_TIP_DELO" />
+          </Key>
+          <Property Name="ID_UM_DELO" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="NAZIV" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="UMETNIK_IME" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="UMETNIK_PRZ" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="TIP_DELO_ID_TIP_DELO" Type="varchar2" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VIP">
+          <Key>
+            <PropertyRef Name="TIP_VIP_ID_TIP_VIP" />
+          </Key>
+          <Property Name="ID_VIP" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="IME" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="PRZ" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="BROJ_TEL" Type="number" Precision="38" Scale="0" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="30" />
+          <Property Name="ADRESA" Type="varchar2" MaxLength="50" />
+          <Property Name="IDREZ" Type="varchar2" MaxLength="15" />
+          <Property Name="ID_DOG" Type="varchar2" MaxLength="15" />
+          <Property Name="TIP_VIP_ID_TIP_VIP" Type="varchar2" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZAP">
+          <Key>
+            <PropertyRef Name="ID_ZAP" />
+            <PropertyRef Name="TIP_ZAP_IDTIPZAP" />
+          </Key>
+          <Property Name="ID_ZAP" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="IME" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="PRZ" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="KORISNICKO_IME" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="LOZINKA" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="BROJ_TEL" Type="number" Precision="38" Scale="0" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="30" />
+          <Property Name="ADRESA" Type="varchar2" MaxLength="50" />
+          <Property Name="TIP_ZAP_IDTIPZAP" Type="varchar2" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <Association Name="DOGADJAJ_U_GALERIJI_FK">
+          <End Role="U_GALERIJI" Type="Self.U_GALERIJI" Multiplicity="0..1" />
+          <End Role="DOGADJAJ" Type="Self.DOGADJAJ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="U_GALERIJI">
+              <PropertyRef Name="ID_DOG" />
+            </Principal>
+            <Dependent Role="DOGADJAJ">
+              <PropertyRef Name="U_GALERIJI_ID_DOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DOGADJAJ_U_SALI_FK">
+          <End Role="U_SALI" Type="Self.U_SALI" Multiplicity="0..1" />
+          <End Role="DOGADJAJ" Type="Self.DOGADJAJ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="U_SALI">
+              <PropertyRef Name="ID_DOG" />
+            </Principal>
+            <Dependent Role="DOGADJAJ">
+              <PropertyRef Name="U_SALI_ID_DOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_11">
+          <End Role="U_GALERIJI" Type="Self.U_GALERIJI" Multiplicity="1" />
+          <End Role="POZVANI" Type="Self.POZVANI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="U_GALERIJI">
+              <PropertyRef Name="ID_DOG" />
+            </Principal>
+            <Dependent Role="POZVANI">
+              <PropertyRef Name="U_GALERIJI_ID_DOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_12">
+          <End Role="VIP" Type="Self.VIP" Multiplicity="1" />
+          <End Role="POZVANI" Type="Self.POZVANI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VIP">
+              <PropertyRef Name="TIP_VIP_ID_TIP_VIP" />
+            </Principal>
+            <Dependent Role="POZVANI">
+              <PropertyRef Name="VIP_ID_TIP_VIP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_3">
+          <End Role="U_GALERIJI" Type="Self.U_GALERIJI" Multiplicity="1" />
+          <End Role="DONIRANA_DELA" Type="Self.DONIRANA_DELA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="U_GALERIJI">
+              <PropertyRef Name="ID_DOG" />
+            </Principal>
+            <Dependent Role="DONIRANA_DELA">
+              <PropertyRef Name="U_GALERIJI_ID_DOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_4">
+          <End Role="UMETNICKO_DELO" Type="Self.UMETNICKO_DELO" Multiplicity="1" />
+          <End Role="DONIRANA_DELA" Type="Self.DONIRANA_DELA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UMETNICKO_DELO">
+              <PropertyRef Name="ID_UM_DELO" />
+              <PropertyRef Name="TIP_DELO_ID_TIP_DELO" />
+            </Principal>
+            <Dependent Role="DONIRANA_DELA">
+              <PropertyRef Name="UMETNICKO_DELO_ID_UM_DELO" />
+              <PropertyRef Name="UMETNICKO_DELO_ID_TIP_DELO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_7">
+          <End Role="U_GALERIJI" Type="Self.U_GALERIJI" Multiplicity="1" />
+          <End Role="IZLOZENA_DELA" Type="Self.IZLOZENA_DELA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="U_GALERIJI">
+              <PropertyRef Name="ID_DOG" />
+            </Principal>
+            <Dependent Role="IZLOZENA_DELA">
+              <PropertyRef Name="U_GALERIJI_ID_DOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_8">
+          <End Role="UMETNICKO_DELO" Type="Self.UMETNICKO_DELO" Multiplicity="1" />
+          <End Role="IZLOZENA_DELA" Type="Self.IZLOZENA_DELA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UMETNICKO_DELO">
+              <PropertyRef Name="ID_UM_DELO" />
+              <PropertyRef Name="TIP_DELO_ID_TIP_DELO" />
+            </Principal>
+            <Dependent Role="IZLOZENA_DELA">
+              <PropertyRef Name="UMETNICKO_DELO_ID_UM_DELO" />
+              <PropertyRef Name="UMETNICKO_DELO_ID_TIP_DELO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZ_SKOLA_FK">
+          <End Role="SKOLA" Type="Self.SKOLA" Multiplicity="1" />
+          <End Role="REZ" Type="Self.REZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SKOLA">
+              <PropertyRef Name="ID_SKOLA" />
+            </Principal>
+            <Dependent Role="REZ">
+              <PropertyRef Name="SKOLA_ID_SKOLA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZ_TIP_REZ_FK">
+          <End Role="TIP_REZ" Type="Self.TIP_REZ" Multiplicity="1" />
+          <End Role="REZ" Type="Self.REZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIP_REZ">
+              <PropertyRef Name="ID_TIP_REZ" />
+            </Principal>
+            <Dependent Role="REZ">
+              <PropertyRef Name="TIP_REZ_ID_TIP_REZ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZ_U_SALI_FK">
+          <End Role="U_SALI" Type="Self.U_SALI" Multiplicity="1" />
+          <End Role="REZ" Type="Self.REZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="U_SALI">
+              <PropertyRef Name="ID_DOG" />
+            </Principal>
+            <Dependent Role="REZ">
+              <PropertyRef Name="U_SALI_ID_DOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZ_VIP_FK">
+          <End Role="VIP" Type="Self.VIP" Multiplicity="1" />
+          <End Role="REZ" Type="Self.REZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VIP">
+              <PropertyRef Name="TIP_VIP_ID_TIP_VIP" />
+            </Principal>
+            <Dependent Role="REZ">
+              <PropertyRef Name="VIP_TIP_VIP_ID_TIP_VIP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZ_ZAP_FK">
+          <End Role="ZAP" Type="Self.ZAP" Multiplicity="0..1" />
+          <End Role="REZ" Type="Self.REZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZAP">
+              <PropertyRef Name="ID_ZAP" />
+              <PropertyRef Name="TIP_ZAP_IDTIPZAP" />
+            </Principal>
+            <Dependent Role="REZ">
+              <PropertyRef Name="ZAP_ID_ZAP" />
+              <PropertyRef Name="ZAP_TIP_ZAP_IDTIPZAP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZ_ZAP_FKV1">
+          <End Role="ZAP" Type="Self.ZAP" Multiplicity="1" />
+          <End Role="REZ" Type="Self.REZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZAP">
+              <PropertyRef Name="ID_ZAP" />
+              <PropertyRef Name="TIP_ZAP_IDTIPZAP" />
+            </Principal>
+            <Dependent Role="REZ">
+              <PropertyRef Name="ZAP_ID_ZAP1" />
+              <PropertyRef Name="ZAP_TIP_ZAP_IDTIPZAP1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZERVISANO_SEDISTE_REZ_FK">
+          <End Role="REZ" Type="Self.REZ" Multiplicity="1" />
+          <End Role="REZERVISANO_SEDISTE" Type="Self.REZERVISANO_SEDISTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REZ">
+              <PropertyRef Name="IDREZ" />
+              <PropertyRef Name="U_SALI_ID_DOG" />
+            </Principal>
+            <Dependent Role="REZERVISANO_SEDISTE">
+              <PropertyRef Name="REZ_IDREZ" />
+              <PropertyRef Name="REZ_ID_DOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZERVISANO_SEDISTE_SEDISTE_FK">
+          <End Role="SEDISTE" Type="Self.SEDISTE" Multiplicity="1" />
+          <End Role="REZERVISANO_SEDISTE" Type="Self.REZERVISANO_SEDISTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEDISTE">
+              <PropertyRef Name="ID_SEDISTE" />
+              <PropertyRef Name="SALA_ID_SALA" />
+            </Principal>
+            <Dependent Role="REZERVISANO_SEDISTE">
+              <PropertyRef Name="SEDISTE_ID_SEDISTE" />
+              <PropertyRef Name="SEDISTE_ID_SALA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SEDISTE_SALA_FK">
+          <End Role="SALA" Type="Self.SALA" Multiplicity="1" />
+          <End Role="SEDISTE" Type="Self.SEDISTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALA">
+              <PropertyRef Name="ID_SALA" />
+            </Principal>
+            <Dependent Role="SEDISTE">
+              <PropertyRef Name="SALA_ID_SALA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UMETNICKO_DELO_TIP_DELO_FK">
+          <End Role="TIP_DELO" Type="Self.TIP_DELO" Multiplicity="1" />
+          <End Role="UMETNICKO_DELO" Type="Self.UMETNICKO_DELO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIP_DELO">
+              <PropertyRef Name="ID_TIP_DELO" />
+            </Principal>
+            <Dependent Role="UMETNICKO_DELO">
+              <PropertyRef Name="TIP_DELO_ID_TIP_DELO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VIP_TIP_VIP_FK">
+          <End Role="TIP_VIP" Type="Self.TIP_VIP" Multiplicity="1" />
+          <End Role="VIP" Type="Self.VIP" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TIP_VIP">
+              <PropertyRef Name="ID_TIP_VIP" />
+            </Principal>
+            <Dependent Role="VIP">
+              <PropertyRef Name="TIP_VIP_ID_TIP_VIP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ZAP_TIP_ZAP_FK">
+          <End Role="TIP_ZAP" Type="Self.TIP_ZAP" Multiplicity="1" />
+          <End Role="ZAP" Type="Self.ZAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIP_ZAP">
+              <PropertyRef Name="IDTIPZAP" />
+            </Principal>
+            <Dependent Role="ZAP">
+              <PropertyRef Name="TIP_ZAP_IDTIPZAP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="DOGADJAJ" EntityType="Self.DOGADJAJ" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="DONIRANA_DELA" EntityType="Self.DONIRANA_DELA" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="IZLOZENA_DELA" EntityType="Self.IZLOZENA_DELA" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="POZVANI" EntityType="Self.POZVANI" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="PROJEKAT" EntityType="Self.PROJEKAT" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="REZ" EntityType="Self.REZ" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="REZERVISANO_SEDISTE" EntityType="Self.REZERVISANO_SEDISTE" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="SALA" EntityType="Self.SALA" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="SEDISTE" EntityType="Self.SEDISTE" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="SKOLA" EntityType="Self.SKOLA" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="TIP_DELO" EntityType="Self.TIP_DELO" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="TIP_REZ" EntityType="Self.TIP_REZ" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="TIP_VIP" EntityType="Self.TIP_VIP" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="TIP_ZAP" EntityType="Self.TIP_ZAP" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="U_GALERIJI" EntityType="Self.U_GALERIJI" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="U_SALI" EntityType="Self.U_SALI" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="UMETNICKO_DELO" EntityType="Self.UMETNICKO_DELO" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="VIP" EntityType="Self.VIP" Schema="IMOLA" store:Type="Tables" />
+          <EntitySet Name="ZAP" EntityType="Self.ZAP" Schema="IMOLA" store:Type="Tables" />
+          <AssociationSet Name="DOGADJAJ_U_GALERIJI_FK" Association="Self.DOGADJAJ_U_GALERIJI_FK">
+            <End Role="U_GALERIJI" EntitySet="U_GALERIJI" />
+            <End Role="DOGADJAJ" EntitySet="DOGADJAJ" />
+          </AssociationSet>
+          <AssociationSet Name="DOGADJAJ_U_SALI_FK" Association="Self.DOGADJAJ_U_SALI_FK">
+            <End Role="U_SALI" EntitySet="U_SALI" />
+            <End Role="DOGADJAJ" EntitySet="DOGADJAJ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_11" Association="Self.FK_ASS_11">
+            <End Role="U_GALERIJI" EntitySet="U_GALERIJI" />
+            <End Role="POZVANI" EntitySet="POZVANI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_12" Association="Self.FK_ASS_12">
+            <End Role="VIP" EntitySet="VIP" />
+            <End Role="POZVANI" EntitySet="POZVANI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_3" Association="Self.FK_ASS_3">
+            <End Role="U_GALERIJI" EntitySet="U_GALERIJI" />
+            <End Role="DONIRANA_DELA" EntitySet="DONIRANA_DELA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_4" Association="Self.FK_ASS_4">
+            <End Role="UMETNICKO_DELO" EntitySet="UMETNICKO_DELO" />
+            <End Role="DONIRANA_DELA" EntitySet="DONIRANA_DELA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_7" Association="Self.FK_ASS_7">
+            <End Role="U_GALERIJI" EntitySet="U_GALERIJI" />
+            <End Role="IZLOZENA_DELA" EntitySet="IZLOZENA_DELA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_8" Association="Self.FK_ASS_8">
+            <End Role="UMETNICKO_DELO" EntitySet="UMETNICKO_DELO" />
+            <End Role="IZLOZENA_DELA" EntitySet="IZLOZENA_DELA" />
+          </AssociationSet>
+          <AssociationSet Name="REZ_SKOLA_FK" Association="Self.REZ_SKOLA_FK">
+            <End Role="SKOLA" EntitySet="SKOLA" />
+            <End Role="REZ" EntitySet="REZ" />
+          </AssociationSet>
+          <AssociationSet Name="REZ_TIP_REZ_FK" Association="Self.REZ_TIP_REZ_FK">
+            <End Role="TIP_REZ" EntitySet="TIP_REZ" />
+            <End Role="REZ" EntitySet="REZ" />
+          </AssociationSet>
+          <AssociationSet Name="REZ_U_SALI_FK" Association="Self.REZ_U_SALI_FK">
+            <End Role="U_SALI" EntitySet="U_SALI" />
+            <End Role="REZ" EntitySet="REZ" />
+          </AssociationSet>
+          <AssociationSet Name="REZ_VIP_FK" Association="Self.REZ_VIP_FK">
+            <End Role="VIP" EntitySet="VIP" />
+            <End Role="REZ" EntitySet="REZ" />
+          </AssociationSet>
+          <AssociationSet Name="REZ_ZAP_FK" Association="Self.REZ_ZAP_FK">
+            <End Role="ZAP" EntitySet="ZAP" />
+            <End Role="REZ" EntitySet="REZ" />
+          </AssociationSet>
+          <AssociationSet Name="REZ_ZAP_FKV1" Association="Self.REZ_ZAP_FKV1">
+            <End Role="ZAP" EntitySet="ZAP" />
+            <End Role="REZ" EntitySet="REZ" />
+          </AssociationSet>
+          <AssociationSet Name="REZERVISANO_SEDISTE_REZ_FK" Association="Self.REZERVISANO_SEDISTE_REZ_FK">
+            <End Role="REZ" EntitySet="REZ" />
+            <End Role="REZERVISANO_SEDISTE" EntitySet="REZERVISANO_SEDISTE" />
+          </AssociationSet>
+          <AssociationSet Name="REZERVISANO_SEDISTE_SEDISTE_FK" Association="Self.REZERVISANO_SEDISTE_SEDISTE_FK">
+            <End Role="SEDISTE" EntitySet="SEDISTE" />
+            <End Role="REZERVISANO_SEDISTE" EntitySet="REZERVISANO_SEDISTE" />
+          </AssociationSet>
+          <AssociationSet Name="SEDISTE_SALA_FK" Association="Self.SEDISTE_SALA_FK">
+            <End Role="SALA" EntitySet="SALA" />
+            <End Role="SEDISTE" EntitySet="SEDISTE" />
+          </AssociationSet>
+          <AssociationSet Name="UMETNICKO_DELO_TIP_DELO_FK" Association="Self.UMETNICKO_DELO_TIP_DELO_FK">
+            <End Role="TIP_DELO" EntitySet="TIP_DELO" />
+            <End Role="UMETNICKO_DELO" EntitySet="UMETNICKO_DELO" />
+          </AssociationSet>
+          <AssociationSet Name="VIP_TIP_VIP_FK" Association="Self.VIP_TIP_VIP_FK">
+            <End Role="TIP_VIP" EntitySet="TIP_VIP" />
+            <End Role="VIP" EntitySet="VIP" />
+          </AssociationSet>
+          <AssociationSet Name="ZAP_TIP_ZAP_FK" Association="Self.ZAP_TIP_ZAP_FK">
+            <End Role="TIP_ZAP" EntitySet="TIP_ZAP" />
+            <End Role="ZAP" EntitySet="ZAP" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DOGADJAJ">
+          <Key>
+            <PropertyRef Name="ID_DOG" />
+          </Key>
+          <Property Name="ID_DOG" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAZIV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GODINA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="KONTAKT_IME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="KONTAKT_PRZ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="KONTAKT_BROJ" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="U_GALERIJI_ID_DOG" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="U_SALI_ID_DOG" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="U_GALERIJI" Relationship="Self.DOGADJAJ_U_GALERIJI_FK" FromRole="DOGADJAJ" ToRole="U_GALERIJI" />
+          <NavigationProperty Name="U_SALI" Relationship="Self.DOGADJAJ_U_SALI_FK" FromRole="DOGADJAJ" ToRole="U_SALI" />
+        </EntityType>
+        <EntityType Name="PROJEKAT">
+          <Key>
+            <PropertyRef Name="SPR" />
+          </Key>
+          <Property Name="SPR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAP" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NAR" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="REZ">
+          <Key>
+            <PropertyRef Name="IDREZ" />
+            <PropertyRef Name="U_SALI_ID_DOG" />
+          </Key>
+          <Property Name="IDREZ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REZERVISANO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PLACENO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="U_SALI_ID_DOG" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ZAP_ID_ZAP1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ZAP_ID_ZAP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TIP_REZ_ID_TIP_REZ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VIP_TIP_VIP_ID_TIP_VIP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SKOLA_ID_SKOLA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PRZ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ZAP_TIP_ZAP_IDTIPZAP1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ZAP_TIP_ZAP_IDTIPZAP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SKOLA" Relationship="Self.REZ_SKOLA_FK" FromRole="REZ" ToRole="SKOLA" />
+          <NavigationProperty Name="TIP_REZ" Relationship="Self.REZ_TIP_REZ_FK" FromRole="REZ" ToRole="TIP_REZ" />
+          <NavigationProperty Name="U_SALI" Relationship="Self.REZ_U_SALI_FK" FromRole="REZ" ToRole="U_SALI" />
+          <NavigationProperty Name="VIP" Relationship="Self.REZ_VIP_FK" FromRole="REZ" ToRole="VIP" />
+          <NavigationProperty Name="ZAP" Relationship="Self.REZ_ZAP_FK" FromRole="REZ" ToRole="ZAP" />
+          <NavigationProperty Name="ZAP1" Relationship="Self.REZ_ZAP_FKV1" FromRole="REZ" ToRole="ZAP" />
+          <NavigationProperty Name="REZERVISANO_SEDISTE" Relationship="Self.REZERVISANO_SEDISTE_REZ_FK" FromRole="REZ" ToRole="REZERVISANO_SEDISTE" />
+        </EntityType>
+        <EntityType Name="REZERVISANO_SEDISTE">
+          <Key>
+            <PropertyRef Name="ID_REZ_SED" />
+            <PropertyRef Name="SEDISTE_ID_SEDISTE" />
+            <PropertyRef Name="SEDISTE_ID_SALA" />
+            <PropertyRef Name="REZ_IDREZ" />
+            <PropertyRef Name="REZ_ID_DOG" />
+          </Key>
+          <Property Name="ID_REZ_SED" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SEDISTE_ID_SEDISTE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SEDISTE_ID_SALA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REZ_IDREZ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REZ_ID_DOG" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="REZ" Relationship="Self.REZERVISANO_SEDISTE_REZ_FK" FromRole="REZERVISANO_SEDISTE" ToRole="REZ" />
+          <NavigationProperty Name="SEDISTE" Relationship="Self.REZERVISANO_SEDISTE_SEDISTE_FK" FromRole="REZERVISANO_SEDISTE" ToRole="SEDISTE" />
+        </EntityType>
+        <EntityType Name="SALA">
+          <Key>
+            <PropertyRef Name="ID_SALA" />
+          </Key>
+          <Property Name="ID_SALA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BROJ_SEDISTA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="SEDISTEs" Relationship="Self.SEDISTE_SALA_FK" FromRole="SALA" ToRole="SEDISTE" />
+        </EntityType>
+        <EntityType Name="SEDISTE">
+          <Key>
+            <PropertyRef Name="ID_SEDISTE" />
+            <PropertyRef Name="SALA_ID_SALA" />
+          </Key>
+          <Property Name="ID_SEDISTE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RED" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="BROJ" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SALA_ID_SALA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="REZERVISANO_SEDISTE" Relationship="Self.REZERVISANO_SEDISTE_SEDISTE_FK" FromRole="SEDISTE" ToRole="REZERVISANO_SEDISTE" />
+          <NavigationProperty Name="SALA" Relationship="Self.SEDISTE_SALA_FK" FromRole="SEDISTE" ToRole="SALA" />
+        </EntityType>
+        <EntityType Name="SKOLA">
+          <Key>
+            <PropertyRef Name="ID_SKOLA" />
+          </Key>
+          <Property Name="ID_SKOLA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAZIV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KONTAKT_IME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="KONTAKT_BROJ" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="REZs" Relationship="Self.REZ_SKOLA_FK" FromRole="SKOLA" ToRole="REZ" />
+        </EntityType>
+        <EntityType Name="TIP_DELO">
+          <Key>
+            <PropertyRef Name="ID_TIP_DELO" />
+          </Key>
+          <Property Name="ID_TIP_DELO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAZIV" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UMETNICKO_DELO" Relationship="Self.UMETNICKO_DELO_TIP_DELO_FK" FromRole="TIP_DELO" ToRole="UMETNICKO_DELO" />
+        </EntityType>
+        <EntityType Name="TIP_REZ">
+          <Key>
+            <PropertyRef Name="ID_TIP_REZ" />
+          </Key>
+          <Property Name="ID_TIP_REZ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAZIV" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="REZs" Relationship="Self.REZ_TIP_REZ_FK" FromRole="TIP_REZ" ToRole="REZ" />
+        </EntityType>
+        <EntityType Name="TIP_VIP">
+          <Key>
+            <PropertyRef Name="ID_TIP_VIP" />
+          </Key>
+          <Property Name="ID_TIP_VIP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAZIV" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VIP" Relationship="Self.VIP_TIP_VIP_FK" FromRole="TIP_VIP" ToRole="VIP" />
+        </EntityType>
+        <EntityType Name="TIP_ZAP">
+          <Key>
+            <PropertyRef Name="IDTIPZAP" />
+          </Key>
+          <Property Name="IDTIPZAP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAZIV" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ZAPs" Relationship="Self.ZAP_TIP_ZAP_FK" FromRole="TIP_ZAP" ToRole="ZAP" />
+        </EntityType>
+        <EntityType Name="U_GALERIJI">
+          <Key>
+            <PropertyRef Name="ID_DOG" />
+          </Key>
+          <Property Name="ID_DOG" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAZIV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GODINA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="KONTAKT_IME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="KONTAKT_PRZ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="KONTAKT_BROJ" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DATUM" Type="DateTime" Nullable="false" />
+          <Property Name="REALIZOVANO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="VODITELJ_IME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VODITELJ_PRZ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="VODITELJ_BROJ" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="DOGADJAJs" Relationship="Self.DOGADJAJ_U_GALERIJI_FK" FromRole="U_GALERIJI" ToRole="DOGADJAJ" />
+          <NavigationProperty Name="UMETNICKO_DELO" Relationship="Self.DONIRANA_DELA" FromRole="U_GALERIJI" ToRole="UMETNICKO_DELO" />
+          <NavigationProperty Name="UMETNICKO_DELO1" Relationship="Self.IZLOZENA_DELA" FromRole="U_GALERIJI" ToRole="UMETNICKO_DELO" />
+          <NavigationProperty Name="VIPs" Relationship="Self.POZVANI" FromRole="U_GALERIJI" ToRole="VIP" />
+        </EntityType>
+        <EntityType Name="U_SALI">
+          <Key>
+            <PropertyRef Name="ID_DOG" />
+          </Key>
+          <Property Name="ID_DOG" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAZIV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GODINA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="KONTAKT_IME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="KONTAKT_PRZ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="KONTAKT_BROJ" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DATUM" Type="DateTime" Nullable="false" />
+          <Property Name="REALIZOVANO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ZARADA" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="POSECENOST" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CENA_KARTE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TITL" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="OPREMA" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="DOGADJAJs" Relationship="Self.DOGADJAJ_U_SALI_FK" FromRole="U_SALI" ToRole="DOGADJAJ" />
+          <NavigationProperty Name="REZs" Relationship="Self.REZ_U_SALI_FK" FromRole="U_SALI" ToRole="REZ" />
+        </EntityType>
+        <EntityType Name="UMETNICKO_DELO">
+          <Key>
+            <PropertyRef Name="ID_UM_DELO" />
+            <PropertyRef Name="TIP_DELO_ID_TIP_DELO" />
+          </Key>
+          <Property Name="ID_UM_DELO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAZIV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UMETNIK_IME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UMETNIK_PRZ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIP_DELO_ID_TIP_DELO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TIP_DELO" Relationship="Self.UMETNICKO_DELO_TIP_DELO_FK" FromRole="UMETNICKO_DELO" ToRole="TIP_DELO" />
+          <NavigationProperty Name="U_GALERIJI" Relationship="Self.DONIRANA_DELA" FromRole="UMETNICKO_DELO" ToRole="U_GALERIJI" />
+          <NavigationProperty Name="U_GALERIJI1" Relationship="Self.IZLOZENA_DELA" FromRole="UMETNICKO_DELO" ToRole="U_GALERIJI" />
+        </EntityType>
+        <EntityType Name="VIP">
+          <Key>
+            <PropertyRef Name="TIP_VIP_ID_TIP_VIP" />
+          </Key>
+          <Property Name="ID_VIP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRZ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BROJ_TEL" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ADRESA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDREZ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ID_DOG" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TIP_VIP_ID_TIP_VIP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="REZs" Relationship="Self.REZ_VIP_FK" FromRole="VIP" ToRole="REZ" />
+          <NavigationProperty Name="TIP_VIP" Relationship="Self.VIP_TIP_VIP_FK" FromRole="VIP" ToRole="TIP_VIP" />
+          <NavigationProperty Name="U_GALERIJI" Relationship="Self.POZVANI" FromRole="VIP" ToRole="U_GALERIJI" />
+        </EntityType>
+        <EntityType Name="ZAP">
+          <Key>
+            <PropertyRef Name="ID_ZAP" />
+            <PropertyRef Name="TIP_ZAP_IDTIPZAP" />
+          </Key>
+          <Property Name="ID_ZAP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRZ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KORISNICKO_IME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LOZINKA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BROJ_TEL" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ADRESA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TIP_ZAP_IDTIPZAP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="REZs" Relationship="Self.REZ_ZAP_FK" FromRole="ZAP" ToRole="REZ" />
+          <NavigationProperty Name="REZs1" Relationship="Self.REZ_ZAP_FKV1" FromRole="ZAP" ToRole="REZ" />
+          <NavigationProperty Name="TIP_ZAP" Relationship="Self.ZAP_TIP_ZAP_FK" FromRole="ZAP" ToRole="TIP_ZAP" />
+        </EntityType>
+        <Association Name="DOGADJAJ_U_GALERIJI_FK">
+          <End Role="U_GALERIJI" Type="Self.U_GALERIJI" Multiplicity="0..1" />
+          <End Role="DOGADJAJ" Type="Self.DOGADJAJ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="U_GALERIJI">
+              <PropertyRef Name="ID_DOG" />
+            </Principal>
+            <Dependent Role="DOGADJAJ">
+              <PropertyRef Name="U_GALERIJI_ID_DOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DOGADJAJ_U_SALI_FK">
+          <End Role="U_SALI" Type="Self.U_SALI" Multiplicity="0..1" />
+          <End Role="DOGADJAJ" Type="Self.DOGADJAJ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="U_SALI">
+              <PropertyRef Name="ID_DOG" />
+            </Principal>
+            <Dependent Role="DOGADJAJ">
+              <PropertyRef Name="U_SALI_ID_DOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZ_SKOLA_FK">
+          <End Role="SKOLA" Type="Self.SKOLA" Multiplicity="1" />
+          <End Role="REZ" Type="Self.REZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SKOLA">
+              <PropertyRef Name="ID_SKOLA" />
+            </Principal>
+            <Dependent Role="REZ">
+              <PropertyRef Name="SKOLA_ID_SKOLA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZ_TIP_REZ_FK">
+          <End Role="TIP_REZ" Type="Self.TIP_REZ" Multiplicity="1" />
+          <End Role="REZ" Type="Self.REZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIP_REZ">
+              <PropertyRef Name="ID_TIP_REZ" />
+            </Principal>
+            <Dependent Role="REZ">
+              <PropertyRef Name="TIP_REZ_ID_TIP_REZ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZ_U_SALI_FK">
+          <End Role="U_SALI" Type="Self.U_SALI" Multiplicity="1" />
+          <End Role="REZ" Type="Self.REZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="U_SALI">
+              <PropertyRef Name="ID_DOG" />
+            </Principal>
+            <Dependent Role="REZ">
+              <PropertyRef Name="U_SALI_ID_DOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZ_VIP_FK">
+          <End Role="VIP" Type="Self.VIP" Multiplicity="1" />
+          <End Role="REZ" Type="Self.REZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VIP">
+              <PropertyRef Name="TIP_VIP_ID_TIP_VIP" />
+            </Principal>
+            <Dependent Role="REZ">
+              <PropertyRef Name="VIP_TIP_VIP_ID_TIP_VIP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZ_ZAP_FK">
+          <End Role="ZAP" Type="Self.ZAP" Multiplicity="0..1" />
+          <End Role="REZ" Type="Self.REZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZAP">
+              <PropertyRef Name="ID_ZAP" />
+              <PropertyRef Name="TIP_ZAP_IDTIPZAP" />
+            </Principal>
+            <Dependent Role="REZ">
+              <PropertyRef Name="ZAP_ID_ZAP" />
+              <PropertyRef Name="ZAP_TIP_ZAP_IDTIPZAP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZ_ZAP_FKV1">
+          <End Role="ZAP" Type="Self.ZAP" Multiplicity="1" />
+          <End Role="REZ" Type="Self.REZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZAP">
+              <PropertyRef Name="ID_ZAP" />
+              <PropertyRef Name="TIP_ZAP_IDTIPZAP" />
+            </Principal>
+            <Dependent Role="REZ">
+              <PropertyRef Name="ZAP_ID_ZAP1" />
+              <PropertyRef Name="ZAP_TIP_ZAP_IDTIPZAP1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZERVISANO_SEDISTE_REZ_FK">
+          <End Role="REZ" Type="Self.REZ" Multiplicity="1" />
+          <End Role="REZERVISANO_SEDISTE" Type="Self.REZERVISANO_SEDISTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REZ">
+              <PropertyRef Name="IDREZ" />
+              <PropertyRef Name="U_SALI_ID_DOG" />
+            </Principal>
+            <Dependent Role="REZERVISANO_SEDISTE">
+              <PropertyRef Name="REZ_IDREZ" />
+              <PropertyRef Name="REZ_ID_DOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REZERVISANO_SEDISTE_SEDISTE_FK">
+          <End Role="SEDISTE" Type="Self.SEDISTE" Multiplicity="1" />
+          <End Role="REZERVISANO_SEDISTE" Type="Self.REZERVISANO_SEDISTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEDISTE">
+              <PropertyRef Name="ID_SEDISTE" />
+              <PropertyRef Name="SALA_ID_SALA" />
+            </Principal>
+            <Dependent Role="REZERVISANO_SEDISTE">
+              <PropertyRef Name="SEDISTE_ID_SEDISTE" />
+              <PropertyRef Name="SEDISTE_ID_SALA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SEDISTE_SALA_FK">
+          <End Role="SALA" Type="Self.SALA" Multiplicity="1" />
+          <End Role="SEDISTE" Type="Self.SEDISTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALA">
+              <PropertyRef Name="ID_SALA" />
+            </Principal>
+            <Dependent Role="SEDISTE">
+              <PropertyRef Name="SALA_ID_SALA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UMETNICKO_DELO_TIP_DELO_FK">
+          <End Role="TIP_DELO" Type="Self.TIP_DELO" Multiplicity="1" />
+          <End Role="UMETNICKO_DELO" Type="Self.UMETNICKO_DELO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIP_DELO">
+              <PropertyRef Name="ID_TIP_DELO" />
+            </Principal>
+            <Dependent Role="UMETNICKO_DELO">
+              <PropertyRef Name="TIP_DELO_ID_TIP_DELO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VIP_TIP_VIP_FK">
+          <End Role="TIP_VIP" Type="Self.TIP_VIP" Multiplicity="1" />
+          <End Role="VIP" Type="Self.VIP" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TIP_VIP">
+              <PropertyRef Name="ID_TIP_VIP" />
+            </Principal>
+            <Dependent Role="VIP">
+              <PropertyRef Name="TIP_VIP_ID_TIP_VIP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ZAP_TIP_ZAP_FK">
+          <End Role="TIP_ZAP" Type="Self.TIP_ZAP" Multiplicity="1" />
+          <End Role="ZAP" Type="Self.ZAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIP_ZAP">
+              <PropertyRef Name="IDTIPZAP" />
+            </Principal>
+            <Dependent Role="ZAP">
+              <PropertyRef Name="TIP_ZAP_IDTIPZAP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DONIRANA_DELA">
+          <End Role="U_GALERIJI" Type="Self.U_GALERIJI" Multiplicity="*" />
+          <End Role="UMETNICKO_DELO" Type="Self.UMETNICKO_DELO" Multiplicity="*" />
+        </Association>
+        <Association Name="IZLOZENA_DELA">
+          <End Role="U_GALERIJI" Type="Self.U_GALERIJI" Multiplicity="*" />
+          <End Role="UMETNICKO_DELO" Type="Self.UMETNICKO_DELO" Multiplicity="*" />
+        </Association>
+        <Association Name="POZVANI">
+          <End Role="U_GALERIJI" Type="Self.U_GALERIJI" Multiplicity="*" />
+          <End Role="VIP" Type="Self.VIP" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DOGADJAJs" EntityType="Self.DOGADJAJ" />
+          <EntitySet Name="PROJEKATs" EntityType="Self.PROJEKAT" />
+          <EntitySet Name="REZs" EntityType="Self.REZ" />
+          <EntitySet Name="REZERVISANO_SEDISTE" EntityType="Self.REZERVISANO_SEDISTE" />
+          <EntitySet Name="SALAs" EntityType="Self.SALA" />
+          <EntitySet Name="SEDISTEs" EntityType="Self.SEDISTE" />
+          <EntitySet Name="SKOLAs" EntityType="Self.SKOLA" />
+          <EntitySet Name="TIP_DELO" EntityType="Self.TIP_DELO" />
+          <EntitySet Name="TIP_REZ" EntityType="Self.TIP_REZ" />
+          <EntitySet Name="TIP_VIP" EntityType="Self.TIP_VIP" />
+          <EntitySet Name="TIP_ZAP" EntityType="Self.TIP_ZAP" />
+          <EntitySet Name="U_GALERIJI" EntityType="Self.U_GALERIJI" />
+          <EntitySet Name="U_SALI" EntityType="Self.U_SALI" />
+          <EntitySet Name="UMETNICKO_DELO" EntityType="Self.UMETNICKO_DELO" />
+          <EntitySet Name="VIPs" EntityType="Self.VIP" />
+          <EntitySet Name="ZAPs" EntityType="Self.ZAP" />
+          <AssociationSet Name="DOGADJAJ_U_GALERIJI_FK" Association="Self.DOGADJAJ_U_GALERIJI_FK">
+            <End Role="U_GALERIJI" EntitySet="U_GALERIJI" />
+            <End Role="DOGADJAJ" EntitySet="DOGADJAJs" />
+          </AssociationSet>
+          <AssociationSet Name="DOGADJAJ_U_SALI_FK" Association="Self.DOGADJAJ_U_SALI_FK">
+            <End Role="U_SALI" EntitySet="U_SALI" />
+            <End Role="DOGADJAJ" EntitySet="DOGADJAJs" />
+          </AssociationSet>
+          <AssociationSet Name="REZ_SKOLA_FK" Association="Self.REZ_SKOLA_FK">
+            <End Role="SKOLA" EntitySet="SKOLAs" />
+            <End Role="REZ" EntitySet="REZs" />
+          </AssociationSet>
+          <AssociationSet Name="REZ_TIP_REZ_FK" Association="Self.REZ_TIP_REZ_FK">
+            <End Role="TIP_REZ" EntitySet="TIP_REZ" />
+            <End Role="REZ" EntitySet="REZs" />
+          </AssociationSet>
+          <AssociationSet Name="REZ_U_SALI_FK" Association="Self.REZ_U_SALI_FK">
+            <End Role="U_SALI" EntitySet="U_SALI" />
+            <End Role="REZ" EntitySet="REZs" />
+          </AssociationSet>
+          <AssociationSet Name="REZ_VIP_FK" Association="Self.REZ_VIP_FK">
+            <End Role="VIP" EntitySet="VIPs" />
+            <End Role="REZ" EntitySet="REZs" />
+          </AssociationSet>
+          <AssociationSet Name="REZ_ZAP_FK" Association="Self.REZ_ZAP_FK">
+            <End Role="ZAP" EntitySet="ZAPs" />
+            <End Role="REZ" EntitySet="REZs" />
+          </AssociationSet>
+          <AssociationSet Name="REZ_ZAP_FKV1" Association="Self.REZ_ZAP_FKV1">
+            <End Role="ZAP" EntitySet="ZAPs" />
+            <End Role="REZ" EntitySet="REZs" />
+          </AssociationSet>
+          <AssociationSet Name="REZERVISANO_SEDISTE_REZ_FK" Association="Self.REZERVISANO_SEDISTE_REZ_FK">
+            <End Role="REZ" EntitySet="REZs" />
+            <End Role="REZERVISANO_SEDISTE" EntitySet="REZERVISANO_SEDISTE" />
+          </AssociationSet>
+          <AssociationSet Name="REZERVISANO_SEDISTE_SEDISTE_FK" Association="Self.REZERVISANO_SEDISTE_SEDISTE_FK">
+            <End Role="SEDISTE" EntitySet="SEDISTEs" />
+            <End Role="REZERVISANO_SEDISTE" EntitySet="REZERVISANO_SEDISTE" />
+          </AssociationSet>
+          <AssociationSet Name="SEDISTE_SALA_FK" Association="Self.SEDISTE_SALA_FK">
+            <End Role="SALA" EntitySet="SALAs" />
+            <End Role="SEDISTE" EntitySet="SEDISTEs" />
+          </AssociationSet>
+          <AssociationSet Name="UMETNICKO_DELO_TIP_DELO_FK" Association="Self.UMETNICKO_DELO_TIP_DELO_FK">
+            <End Role="TIP_DELO" EntitySet="TIP_DELO" />
+            <End Role="UMETNICKO_DELO" EntitySet="UMETNICKO_DELO" />
+          </AssociationSet>
+          <AssociationSet Name="VIP_TIP_VIP_FK" Association="Self.VIP_TIP_VIP_FK">
+            <End Role="TIP_VIP" EntitySet="TIP_VIP" />
+            <End Role="VIP" EntitySet="VIPs" />
+          </AssociationSet>
+          <AssociationSet Name="ZAP_TIP_ZAP_FK" Association="Self.ZAP_TIP_ZAP_FK">
+            <End Role="TIP_ZAP" EntitySet="TIP_ZAP" />
+            <End Role="ZAP" EntitySet="ZAPs" />
+          </AssociationSet>
+          <AssociationSet Name="DONIRANA_DELA" Association="Self.DONIRANA_DELA">
+            <End Role="U_GALERIJI" EntitySet="U_GALERIJI" />
+            <End Role="UMETNICKO_DELO" EntitySet="UMETNICKO_DELO" />
+          </AssociationSet>
+          <AssociationSet Name="IZLOZENA_DELA" Association="Self.IZLOZENA_DELA">
+            <End Role="U_GALERIJI" EntitySet="U_GALERIJI" />
+            <End Role="UMETNICKO_DELO" EntitySet="UMETNICKO_DELO" />
+          </AssociationSet>
+          <AssociationSet Name="POZVANI" Association="Self.POZVANI">
+            <End Role="U_GALERIJI" EntitySet="U_GALERIJI" />
+            <End Role="VIP" EntitySet="VIPs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="DOGADJAJs">
+            <EntityTypeMapping TypeName="Model.DOGADJAJ">
+              <MappingFragment StoreEntitySet="DOGADJAJ">
+                <ScalarProperty Name="ID_DOG" ColumnName="ID_DOG" />
+                <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
+                <ScalarProperty Name="GODINA" ColumnName="GODINA" />
+                <ScalarProperty Name="KONTAKT_IME" ColumnName="KONTAKT_IME" />
+                <ScalarProperty Name="KONTAKT_PRZ" ColumnName="KONTAKT_PRZ" />
+                <ScalarProperty Name="KONTAKT_BROJ" ColumnName="KONTAKT_BROJ" />
+                <ScalarProperty Name="U_GALERIJI_ID_DOG" ColumnName="U_GALERIJI_ID_DOG" />
+                <ScalarProperty Name="U_SALI_ID_DOG" ColumnName="U_SALI_ID_DOG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROJEKATs">
+            <EntityTypeMapping TypeName="Model.PROJEKAT">
+              <MappingFragment StoreEntitySet="PROJEKAT">
+                <ScalarProperty Name="SPR" ColumnName="SPR" />
+                <ScalarProperty Name="RUK" ColumnName="RUK" />
+                <ScalarProperty Name="NAP" ColumnName="NAP" />
+                <ScalarProperty Name="NAR" ColumnName="NAR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REZs">
+            <EntityTypeMapping TypeName="Model.REZ">
+              <MappingFragment StoreEntitySet="REZ">
+                <ScalarProperty Name="IDREZ" ColumnName="IDREZ" />
+                <ScalarProperty Name="REZERVISANO" ColumnName="REZERVISANO" />
+                <ScalarProperty Name="PLACENO" ColumnName="PLACENO" />
+                <ScalarProperty Name="U_SALI_ID_DOG" ColumnName="U_SALI_ID_DOG" />
+                <ScalarProperty Name="ZAP_ID_ZAP1" ColumnName="ZAP_ID_ZAP1" />
+                <ScalarProperty Name="ZAP_ID_ZAP" ColumnName="ZAP_ID_ZAP" />
+                <ScalarProperty Name="TIP_REZ_ID_TIP_REZ" ColumnName="TIP_REZ_ID_TIP_REZ" />
+                <ScalarProperty Name="VIP_TIP_VIP_ID_TIP_VIP" ColumnName="VIP_TIP_VIP_ID_TIP_VIP" />
+                <ScalarProperty Name="SKOLA_ID_SKOLA" ColumnName="SKOLA_ID_SKOLA" />
+                <ScalarProperty Name="IME" ColumnName="IME" />
+                <ScalarProperty Name="PRZ" ColumnName="PRZ" />
+                <ScalarProperty Name="ZAP_TIP_ZAP_IDTIPZAP1" ColumnName="ZAP_TIP_ZAP_IDTIPZAP1" />
+                <ScalarProperty Name="ZAP_TIP_ZAP_IDTIPZAP" ColumnName="ZAP_TIP_ZAP_IDTIPZAP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REZERVISANO_SEDISTE">
+            <EntityTypeMapping TypeName="Model.REZERVISANO_SEDISTE">
+              <MappingFragment StoreEntitySet="REZERVISANO_SEDISTE">
+                <ScalarProperty Name="ID_REZ_SED" ColumnName="ID_REZ_SED" />
+                <ScalarProperty Name="SEDISTE_ID_SEDISTE" ColumnName="SEDISTE_ID_SEDISTE" />
+                <ScalarProperty Name="SEDISTE_ID_SALA" ColumnName="SEDISTE_ID_SALA" />
+                <ScalarProperty Name="REZ_IDREZ" ColumnName="REZ_IDREZ" />
+                <ScalarProperty Name="REZ_ID_DOG" ColumnName="REZ_ID_DOG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SALAs">
+            <EntityTypeMapping TypeName="Model.SALA">
+              <MappingFragment StoreEntitySet="SALA">
+                <ScalarProperty Name="ID_SALA" ColumnName="ID_SALA" />
+                <ScalarProperty Name="IME" ColumnName="IME" />
+                <ScalarProperty Name="BROJ_SEDISTA" ColumnName="BROJ_SEDISTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEDISTEs">
+            <EntityTypeMapping TypeName="Model.SEDISTE">
+              <MappingFragment StoreEntitySet="SEDISTE">
+                <ScalarProperty Name="ID_SEDISTE" ColumnName="ID_SEDISTE" />
+                <ScalarProperty Name="RED" ColumnName="RED" />
+                <ScalarProperty Name="BROJ" ColumnName="BROJ" />
+                <ScalarProperty Name="SALA_ID_SALA" ColumnName="SALA_ID_SALA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SKOLAs">
+            <EntityTypeMapping TypeName="Model.SKOLA">
+              <MappingFragment StoreEntitySet="SKOLA">
+                <ScalarProperty Name="ID_SKOLA" ColumnName="ID_SKOLA" />
+                <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
+                <ScalarProperty Name="KONTAKT_IME" ColumnName="KONTAKT_IME" />
+                <ScalarProperty Name="KONTAKT_BROJ" ColumnName="KONTAKT_BROJ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIP_DELO">
+            <EntityTypeMapping TypeName="Model.TIP_DELO">
+              <MappingFragment StoreEntitySet="TIP_DELO">
+                <ScalarProperty Name="ID_TIP_DELO" ColumnName="ID_TIP_DELO" />
+                <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIP_REZ">
+            <EntityTypeMapping TypeName="Model.TIP_REZ">
+              <MappingFragment StoreEntitySet="TIP_REZ">
+                <ScalarProperty Name="ID_TIP_REZ" ColumnName="ID_TIP_REZ" />
+                <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIP_VIP">
+            <EntityTypeMapping TypeName="Model.TIP_VIP">
+              <MappingFragment StoreEntitySet="TIP_VIP">
+                <ScalarProperty Name="ID_TIP_VIP" ColumnName="ID_TIP_VIP" />
+                <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIP_ZAP">
+            <EntityTypeMapping TypeName="Model.TIP_ZAP">
+              <MappingFragment StoreEntitySet="TIP_ZAP">
+                <ScalarProperty Name="IDTIPZAP" ColumnName="IDTIPZAP" />
+                <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="U_GALERIJI">
+            <EntityTypeMapping TypeName="Model.U_GALERIJI">
+              <MappingFragment StoreEntitySet="U_GALERIJI">
+                <ScalarProperty Name="ID_DOG" ColumnName="ID_DOG" />
+                <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
+                <ScalarProperty Name="GODINA" ColumnName="GODINA" />
+                <ScalarProperty Name="KONTAKT_IME" ColumnName="KONTAKT_IME" />
+                <ScalarProperty Name="KONTAKT_PRZ" ColumnName="KONTAKT_PRZ" />
+                <ScalarProperty Name="KONTAKT_BROJ" ColumnName="KONTAKT_BROJ" />
+                <ScalarProperty Name="DATUM" ColumnName="DATUM" />
+                <ScalarProperty Name="REALIZOVANO" ColumnName="REALIZOVANO" />
+                <ScalarProperty Name="VODITELJ_IME" ColumnName="VODITELJ_IME" />
+                <ScalarProperty Name="VODITELJ_PRZ" ColumnName="VODITELJ_PRZ" />
+                <ScalarProperty Name="VODITELJ_BROJ" ColumnName="VODITELJ_BROJ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="U_SALI">
+            <EntityTypeMapping TypeName="Model.U_SALI">
+              <MappingFragment StoreEntitySet="U_SALI">
+                <ScalarProperty Name="ID_DOG" ColumnName="ID_DOG" />
+                <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
+                <ScalarProperty Name="GODINA" ColumnName="GODINA" />
+                <ScalarProperty Name="KONTAKT_IME" ColumnName="KONTAKT_IME" />
+                <ScalarProperty Name="KONTAKT_PRZ" ColumnName="KONTAKT_PRZ" />
+                <ScalarProperty Name="KONTAKT_BROJ" ColumnName="KONTAKT_BROJ" />
+                <ScalarProperty Name="DATUM" ColumnName="DATUM" />
+                <ScalarProperty Name="REALIZOVANO" ColumnName="REALIZOVANO" />
+                <ScalarProperty Name="ZARADA" ColumnName="ZARADA" />
+                <ScalarProperty Name="POSECENOST" ColumnName="POSECENOST" />
+                <ScalarProperty Name="CENA_KARTE" ColumnName="CENA_KARTE" />
+                <ScalarProperty Name="TITL" ColumnName="TITL" />
+                <ScalarProperty Name="OPREMA" ColumnName="OPREMA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UMETNICKO_DELO">
+            <EntityTypeMapping TypeName="Model.UMETNICKO_DELO">
+              <MappingFragment StoreEntitySet="UMETNICKO_DELO">
+                <ScalarProperty Name="ID_UM_DELO" ColumnName="ID_UM_DELO" />
+                <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
+                <ScalarProperty Name="UMETNIK_IME" ColumnName="UMETNIK_IME" />
+                <ScalarProperty Name="UMETNIK_PRZ" ColumnName="UMETNIK_PRZ" />
+                <ScalarProperty Name="TIP_DELO_ID_TIP_DELO" ColumnName="TIP_DELO_ID_TIP_DELO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIPs">
+            <EntityTypeMapping TypeName="Model.VIP">
+              <MappingFragment StoreEntitySet="VIP">
+                <ScalarProperty Name="ID_VIP" ColumnName="ID_VIP" />
+                <ScalarProperty Name="IME" ColumnName="IME" />
+                <ScalarProperty Name="PRZ" ColumnName="PRZ" />
+                <ScalarProperty Name="BROJ_TEL" ColumnName="BROJ_TEL" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ADRESA" ColumnName="ADRESA" />
+                <ScalarProperty Name="IDREZ" ColumnName="IDREZ" />
+                <ScalarProperty Name="ID_DOG" ColumnName="ID_DOG" />
+                <ScalarProperty Name="TIP_VIP_ID_TIP_VIP" ColumnName="TIP_VIP_ID_TIP_VIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZAPs">
+            <EntityTypeMapping TypeName="Model.ZAP">
+              <MappingFragment StoreEntitySet="ZAP">
+                <ScalarProperty Name="ID_ZAP" ColumnName="ID_ZAP" />
+                <ScalarProperty Name="IME" ColumnName="IME" />
+                <ScalarProperty Name="PRZ" ColumnName="PRZ" />
+                <ScalarProperty Name="KORISNICKO_IME" ColumnName="KORISNICKO_IME" />
+                <ScalarProperty Name="LOZINKA" ColumnName="LOZINKA" />
+                <ScalarProperty Name="BROJ_TEL" ColumnName="BROJ_TEL" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ADRESA" ColumnName="ADRESA" />
+                <ScalarProperty Name="TIP_ZAP_IDTIPZAP" ColumnName="TIP_ZAP_IDTIPZAP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="DONIRANA_DELA" TypeName="Model.DONIRANA_DELA" StoreEntitySet="DONIRANA_DELA">
+            <EndProperty Name="U_GALERIJI">
+              <ScalarProperty Name="ID_DOG" ColumnName="U_GALERIJI_ID_DOG" />
+            </EndProperty>
+            <EndProperty Name="UMETNICKO_DELO">
+              <ScalarProperty Name="ID_UM_DELO" ColumnName="UMETNICKO_DELO_ID_UM_DELO" />
+              <ScalarProperty Name="TIP_DELO_ID_TIP_DELO" ColumnName="UMETNICKO_DELO_ID_TIP_DELO" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="IZLOZENA_DELA" TypeName="Model.IZLOZENA_DELA" StoreEntitySet="IZLOZENA_DELA">
+            <EndProperty Name="U_GALERIJI">
+              <ScalarProperty Name="ID_DOG" ColumnName="U_GALERIJI_ID_DOG" />
+            </EndProperty>
+            <EndProperty Name="UMETNICKO_DELO">
+              <ScalarProperty Name="ID_UM_DELO" ColumnName="UMETNICKO_DELO_ID_UM_DELO" />
+              <ScalarProperty Name="TIP_DELO_ID_TIP_DELO" ColumnName="UMETNICKO_DELO_ID_TIP_DELO" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="POZVANI" TypeName="Model.POZVANI" StoreEntitySet="POZVANI">
+            <EndProperty Name="U_GALERIJI">
+              <ScalarProperty Name="ID_DOG" ColumnName="U_GALERIJI_ID_DOG" />
+            </EndProperty>
+            <EndProperty Name="VIP">
+              <ScalarProperty Name="TIP_VIP_ID_TIP_VIP" ColumnName="VIP_ID_TIP_VIP" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
