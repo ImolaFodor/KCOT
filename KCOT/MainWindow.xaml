@@ -9,7 +9,7 @@
         <CollectionViewSource x:Key="tIP_ZAPViewSource" Source="{Binding TIP_ZAP, Source={StaticResource dataSet}}"/>
         <CollectionViewSource x:Key="tIP_ZAPZAPViewSource" Source="{Binding ZAP_TIP_ZAP_FK, Source={StaticResource tIP_ZAPViewSource}}"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource zAPViewSource}" Margin="0,0,-8,21">
+    <Grid DataContext="{StaticResource zAPViewSource}" Margin="0,0,-8,70">
         <TextBlock Height="23" HorizontalAlignment="Left" Margin="10,10,0,0" Name="LoginHeading" Text="Ulaz:" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed"/>
 
         <TextBlock Height="23" HorizontalAlignment="Left" Margin="22,115,0,0" Name="textBlock1" Text="Korisničko ime" VerticalAlignment="Top" Width="79" RenderTransformOrigin="0.339,0.38" />
@@ -17,6 +17,6 @@
         <TextBox Height="23" HorizontalAlignment="Left" Margin="118,115,0,0" Name="textBoxEmail" VerticalAlignment="Top" Width="247" />
         <PasswordBox Height="23" HorizontalAlignment="Left" Margin="118,168,0,0" Name="passwordBox1" VerticalAlignment="Top" Width="247" />
         <Button Content="Login" Height="23" HorizontalAlignment="Left" Margin="118,211,0,0" Name="button1" VerticalAlignment="Top" Width="104" Click="button1_Click" />
-        <TextBlock Height="23" HorizontalAlignment="Left" x:Name ="errormessage" VerticalAlignment="Top" Width="287" Margin="118,253,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
-   </Grid>
+        <TextBlock Height="23" HorizontalAlignment="Left" x:Name ="errormessage" VerticalAlignment="Top" Width="347" Margin="58,291,0,-65"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
+    </Grid>
 </Window>

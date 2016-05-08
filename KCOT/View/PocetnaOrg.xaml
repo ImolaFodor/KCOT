@@ -1,9 +1,44 @@
-﻿<Window x:Class="KCOT.View.PocetnaOrg"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Pocetna" Height="300" Width="300">
+        xmlns:KCOT="clr-namespace:KCOT" x:Class="KCOT.View.PocetnaOrg"
+        Title="Pocetna" Height="498.507" Width="765.672" Loaded="Window_Loaded">
+    <Window.Resources>
+        <KCOT:DataSet x:Key="dataSet"/>
+        <CollectionViewSource x:Key="u_GALERIJIViewSource" Source="{Binding U_GALERIJI, Source={StaticResource dataSet}}"/>
+        <CollectionViewSource x:Key="u_SALIViewSource" Source="{Binding U_SALI, Source={StaticResource dataSet}}"/>
+        <CollectionViewSource x:Key="dOGADJAJViewSource" Source="{Binding DOGADJAJ, Source={StaticResource dataSet}}"/>
+        <CollectionViewSource x:Key="zAPViewSource" Source="{Binding ZAP, Source={StaticResource dataSet}}"/>
+    </Window.Resources>
     <Grid>
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="WelcomeHeading" Text="Dobrodošla " VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed"/>
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="107,10,0,0" x:Name="TextBlockName"  VerticalAlignment="Top" FontSize="15" FontStretch="ExtraCondensed" />
+        <TabControl HorizontalAlignment="Left" Height="449" Margin="0,9,0,0" VerticalAlignment="Top" Width="748">
+            <TabItem Header="Realizovani dogadjaji">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource u_GALERIJIViewSource}" Margin="0,-7,0,7">
+                    <TextBlock Height="39" HorizontalAlignment="Left" Margin="0,12,0,0" x:Name="WelcomeHeading" Text="Dobrodošla " VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed" RenderTransformOrigin="0.411,5.349"/>
+                    <TextBlock Height="21" HorizontalAlignment="Left" Margin="145,12,0,0" x:Name="TextBlockName"  VerticalAlignment="Top" FontSize="15" FontStretch="ExtraCondensed" Width="121" RenderTransformOrigin="0.445,2.48" />
+                    <Label Content="Filtriraj po: " HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.462,0.347" Height="36"/>
+                    <DataGrid x:Name="dOGADJAJDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource dOGADJAJViewSource}}" Margin="68,116,52,215" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="iD_DOGColumn" Binding="{Binding ID_DOG}" Header="ID DOG" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="nAZIVColumn" Binding="{Binding NAZIV}" Header="NAZIV" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="gODINAColumn" Binding="{Binding GODINA}" Header="GODINA" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="kONTAKT_IMEColumn" Binding="{Binding KONTAKT_IME}" Header="KONTAKT IME" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="kONTAKT_PRZColumn" Binding="{Binding KONTAKT_PRZ}" Header="KONTAKT PRZ" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="kONTAKT_BROJColumn" Binding="{Binding KONTAKT_BROJ}" Header="KONTAKT BROJ" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="u_GALERIJI_ID_DOGColumn" Binding="{Binding U_GALERIJI_ID_DOG}" Header="U GALERIJI ID DOG" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="u_SALI_ID_DOGColumn" Binding="{Binding U_SALI_ID_DOG}" Header="U SALI ID DOG" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ComboBox HorizontalAlignment="Left" Margin="114,51,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="615,384,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Planirani dogadjaji">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Rezervacija/prodaja karata">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
