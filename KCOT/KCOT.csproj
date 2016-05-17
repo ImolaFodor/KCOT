@@ -71,7 +71,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DEPARTMENT.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DOGADJAJ.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMPLOYEE.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENDANGERED_SPECIES.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model.cs">
@@ -80,6 +89,12 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="PROJEKAT.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RADNIK.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RADPROJ.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="REZ.cs">
@@ -124,6 +139,9 @@
     <Compile Include="View\PocetnaZap.xaml.cs">
       <DependentUpon>PocetnaZap.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DodajU_GAL.xaml.cs">
+      <DependentUpon>DodajU_GAL.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VIP.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -147,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PocetnaZap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DodajU_GAL.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

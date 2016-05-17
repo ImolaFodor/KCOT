@@ -22,6 +22,7 @@ namespace KCOT
         public string KONTAKT_BROJ { get; set; }
         public string U_GALERIJI_ID_DOG { get; set; }
         public string U_SALI_ID_DOG { get; set; }
+        public string LOKACIJA { get; set; }
     
         public virtual U_GALERIJI U_GALERIJI { get; set; }
         public virtual U_SALI U_SALI { get; set; }

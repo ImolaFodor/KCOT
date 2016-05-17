@@ -41,5 +41,10 @@ namespace KCOT
         public DbSet<UMETNICKO_DELO> UMETNICKO_DELO { get; set; }
         public DbSet<VIP> VIPs { get; set; }
         public DbSet<ZAP> ZAPs { get; set; }
+        public DbSet<DEPARTMENT> DEPARTMENTS { get; set; }
+        public DbSet<EMPLOYEE> EMPLOYEES { get; set; }
+        public DbSet<ENDANGERED_SPECIES> ENDANGERED_SPECIES { get; set; }
+        public DbSet<RADNIK> RADNIKs { get; set; }
+        public DbSet<RADPROJ> RADPROJs { get; set; }
     }
 }

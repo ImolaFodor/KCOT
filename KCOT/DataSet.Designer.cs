@@ -1077,6 +1077,8 @@ namespace KCOT {
             
             private global::System.Data.DataColumn columnU_SALI_ID_DOG;
             
+            private global::System.Data.DataColumn columnLOKACIJA;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DOGADJAJDataTable() {
@@ -1176,6 +1178,14 @@ namespace KCOT {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LOKACIJAColumn {
+                get {
+                    return this.columnLOKACIJA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1211,7 +1221,7 @@ namespace KCOT {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DOGADJAJRow AddDOGADJAJRow(string ID_DOG, string NAZIV, decimal GODINA, string KONTAKT_IME, string KONTAKT_PRZ, string KONTAKT_BROJ, U_GALERIJIRow parentU_GALERIJIRowByDOGADJAJ_U_GALERIJI_FK, U_SALIRow parentU_SALIRowByDOGADJAJ_U_SALI_FK) {
+            public DOGADJAJRow AddDOGADJAJRow(string ID_DOG, string NAZIV, decimal GODINA, string KONTAKT_IME, string KONTAKT_PRZ, string KONTAKT_BROJ, U_GALERIJIRow parentU_GALERIJIRowByDOGADJAJ_U_GALERIJI_FK, U_SALIRow parentU_SALIRowByDOGADJAJ_U_SALI_FK, string LOKACIJA) {
                 DOGADJAJRow rowDOGADJAJRow = ((DOGADJAJRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID_DOG,
@@ -1221,7 +1231,8 @@ namespace KCOT {
                         KONTAKT_PRZ,
                         KONTAKT_BROJ,
                         null,
-                        null};
+                        null,
+                        LOKACIJA};
                 if ((parentU_GALERIJIRowByDOGADJAJ_U_GALERIJI_FK != null)) {
                     columnValuesArray[6] = parentU_GALERIJIRowByDOGADJAJ_U_GALERIJI_FK[0];
                 }
@@ -1265,6 +1276,7 @@ namespace KCOT {
                 this.columnKONTAKT_BROJ = base.Columns["KONTAKT_BROJ"];
                 this.columnU_GALERIJI_ID_DOG = base.Columns["U_GALERIJI_ID_DOG"];
                 this.columnU_SALI_ID_DOG = base.Columns["U_SALI_ID_DOG"];
+                this.columnLOKACIJA = base.Columns["LOKACIJA"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1286,6 +1298,8 @@ namespace KCOT {
                 base.Columns.Add(this.columnU_GALERIJI_ID_DOG);
                 this.columnU_SALI_ID_DOG = new global::System.Data.DataColumn("U_SALI_ID_DOG", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnU_SALI_ID_DOG);
+                this.columnLOKACIJA = new global::System.Data.DataColumn("LOKACIJA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLOKACIJA);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID_DOG}, true));
                 this.columnID_DOG.AllowDBNull = false;
@@ -1299,6 +1313,8 @@ namespace KCOT {
                 this.columnKONTAKT_BROJ.MaxLength = 10;
                 this.columnU_GALERIJI_ID_DOG.MaxLength = 15;
                 this.columnU_SALI_ID_DOG.MaxLength = 15;
+                this.columnLOKACIJA.AllowDBNull = false;
+                this.columnLOKACIJA.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7473,6 +7489,17 @@ namespace KCOT {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string LOKACIJA {
+                get {
+                    return ((string)(this[this.tableDOGADJAJ.LOKACIJAColumn]));
+                }
+                set {
+                    this[this.tableDOGADJAJ.LOKACIJAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public U_GALERIJIRow U_GALERIJIRow {
                 get {
                     return ((U_GALERIJIRow)(this.GetParentRow(this.Table.ParentRelations["DOGADJAJ_U_GALERIJI_FK"])));
@@ -10587,10 +10614,11 @@ namespace KCOT.DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("KONTAKT_BROJ", "KONTAKT_BROJ");
             tableMapping.ColumnMappings.Add("U_GALERIJI_ID_DOG", "U_GALERIJI_ID_DOG");
             tableMapping.ColumnMappings.Add("U_SALI_ID_DOG", "U_SALI_ID_DOG");
+            tableMapping.ColumnMappings.Add("LOKACIJA", "LOKACIJA");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""IMOLA"".""DOGADJAJ"" WHERE ((""ID_DOG"" = :Original_ID_DOG) AND (""NAZIV"" = :Original_NAZIV) AND (""GODINA"" = :Original_GODINA) AND ((:IsNull_KONTAKT_IME = 1 AND ""KONTAKT_IME"" IS NULL) OR (""KONTAKT_IME"" = :Original_KONTAKT_IME)) AND ((:IsNull_KONTAKT_PRZ = 1 AND ""KONTAKT_PRZ"" IS NULL) OR (""KONTAKT_PRZ"" = :Original_KONTAKT_PRZ)) AND ((:IsNull_KONTAKT_BROJ = 1 AND ""KONTAKT_BROJ"" IS NULL) OR (""KONTAKT_BROJ"" = :Original_KONTAKT_BROJ)) AND ((:IsNull_U_GALERIJI_ID_DOG = 1 AND ""U_GALERIJI_ID_DOG"" IS NULL) OR (""U_GALERIJI_ID_DOG"" = :Original_U_GALERIJI_ID_DOG)) AND ((:IsNull_U_SALI_ID_DOG = 1 AND ""U_SALI_ID_DOG"" IS NULL) OR (""U_SALI_ID_DOG"" = :Original_U_SALI_ID_DOG)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""IMOLA"".""DOGADJAJ"" WHERE ((""ID_DOG"" = :Original_ID_DOG) AND (""NAZIV"" = :Original_NAZIV) AND (""GODINA"" = :Original_GODINA) AND ((:IsNull_KONTAKT_IME = 1 AND ""KONTAKT_IME"" IS NULL) OR (""KONTAKT_IME"" = :Original_KONTAKT_IME)) AND ((:IsNull_KONTAKT_PRZ = 1 AND ""KONTAKT_PRZ"" IS NULL) OR (""KONTAKT_PRZ"" = :Original_KONTAKT_PRZ)) AND ((:IsNull_KONTAKT_BROJ = 1 AND ""KONTAKT_BROJ"" IS NULL) OR (""KONTAKT_BROJ"" = :Original_KONTAKT_BROJ)) AND ((:IsNull_U_GALERIJI_ID_DOG = 1 AND ""U_GALERIJI_ID_DOG"" IS NULL) OR (""U_GALERIJI_ID_DOG"" = :Original_U_GALERIJI_ID_DOG)) AND ((:IsNull_U_SALI_ID_DOG = 1 AND ""U_SALI_ID_DOG"" IS NULL) OR (""U_SALI_ID_DOG"" = :Original_U_SALI_ID_DOG)) AND (""LOKACIJA"" = :Original_LOKACIJA))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID_DOG";
@@ -10707,9 +10735,17 @@ namespace KCOT.DataSetTableAdapters {
             param.SourceColumn = "U_SALI_ID_DOG";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_LOKACIJA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "LOKACIJA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO ""IMOLA"".""DOGADJAJ"" (""ID_DOG"", ""NAZIV"", ""GODINA"", ""KONTAKT_IME"", ""KONTAKT_PRZ"", ""KONTAKT_BROJ"", ""U_GALERIJI_ID_DOG"", ""U_SALI_ID_DOG"") VALUES (:ID_DOG, :NAZIV, :GODINA, :KONTAKT_IME, :KONTAKT_PRZ, :KONTAKT_BROJ, :U_GALERIJI_ID_DOG, :U_SALI_ID_DOG)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO ""IMOLA"".""DOGADJAJ"" (""ID_DOG"", ""NAZIV"", ""GODINA"", ""KONTAKT_IME"", ""KONTAKT_PRZ"", ""KONTAKT_BROJ"", ""U_GALERIJI_ID_DOG"", ""U_SALI_ID_DOG"", ""LOKACIJA"") VALUES (:ID_DOG, :NAZIV, :GODINA, :KONTAKT_IME, :KONTAKT_PRZ, :KONTAKT_BROJ, :U_GALERIJI_ID_DOG, :U_SALI_ID_DOG, :LOKACIJA)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID_DOG";
@@ -10768,9 +10804,16 @@ namespace KCOT.DataSetTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "U_SALI_ID_DOG";
             this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "LOKACIJA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "LOKACIJA";
+            this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""IMOLA"".""DOGADJAJ"" SET ""ID_DOG"" = :ID_DOG, ""NAZIV"" = :NAZIV, ""GODINA"" = :GODINA, ""KONTAKT_IME"" = :KONTAKT_IME, ""KONTAKT_PRZ"" = :KONTAKT_PRZ, ""KONTAKT_BROJ"" = :KONTAKT_BROJ, ""U_GALERIJI_ID_DOG"" = :U_GALERIJI_ID_DOG, ""U_SALI_ID_DOG"" = :U_SALI_ID_DOG WHERE ((""ID_DOG"" = :Original_ID_DOG) AND (""NAZIV"" = :Original_NAZIV) AND (""GODINA"" = :Original_GODINA) AND ((:IsNull_KONTAKT_IME = 1 AND ""KONTAKT_IME"" IS NULL) OR (""KONTAKT_IME"" = :Original_KONTAKT_IME)) AND ((:IsNull_KONTAKT_PRZ = 1 AND ""KONTAKT_PRZ"" IS NULL) OR (""KONTAKT_PRZ"" = :Original_KONTAKT_PRZ)) AND ((:IsNull_KONTAKT_BROJ = 1 AND ""KONTAKT_BROJ"" IS NULL) OR (""KONTAKT_BROJ"" = :Original_KONTAKT_BROJ)) AND ((:IsNull_U_GALERIJI_ID_DOG = 1 AND ""U_GALERIJI_ID_DOG"" IS NULL) OR (""U_GALERIJI_ID_DOG"" = :Original_U_GALERIJI_ID_DOG)) AND ((:IsNull_U_SALI_ID_DOG = 1 AND ""U_SALI_ID_DOG"" IS NULL) OR (""U_SALI_ID_DOG"" = :Original_U_SALI_ID_DOG)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""IMOLA"".""DOGADJAJ"" SET ""ID_DOG"" = :ID_DOG, ""NAZIV"" = :NAZIV, ""GODINA"" = :GODINA, ""KONTAKT_IME"" = :KONTAKT_IME, ""KONTAKT_PRZ"" = :KONTAKT_PRZ, ""KONTAKT_BROJ"" = :KONTAKT_BROJ, ""U_GALERIJI_ID_DOG"" = :U_GALERIJI_ID_DOG, ""U_SALI_ID_DOG"" = :U_SALI_ID_DOG, ""LOKACIJA"" = :LOKACIJA WHERE ((""ID_DOG"" = :Original_ID_DOG) AND (""NAZIV"" = :Original_NAZIV) AND (""GODINA"" = :Original_GODINA) AND ((:IsNull_KONTAKT_IME = 1 AND ""KONTAKT_IME"" IS NULL) OR (""KONTAKT_IME"" = :Original_KONTAKT_IME)) AND ((:IsNull_KONTAKT_PRZ = 1 AND ""KONTAKT_PRZ"" IS NULL) OR (""KONTAKT_PRZ"" = :Original_KONTAKT_PRZ)) AND ((:IsNull_KONTAKT_BROJ = 1 AND ""KONTAKT_BROJ"" IS NULL) OR (""KONTAKT_BROJ"" = :Original_KONTAKT_BROJ)) AND ((:IsNull_U_GALERIJI_ID_DOG = 1 AND ""U_GALERIJI_ID_DOG"" IS NULL) OR (""U_GALERIJI_ID_DOG"" = :Original_U_GALERIJI_ID_DOG)) AND ((:IsNull_U_SALI_ID_DOG = 1 AND ""U_SALI_ID_DOG"" IS NULL) OR (""U_SALI_ID_DOG"" = :Original_U_SALI_ID_DOG)) AND (""LOKACIJA"" = :Original_LOKACIJA))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID_DOG";
@@ -10828,6 +10871,13 @@ namespace KCOT.DataSetTableAdapters {
             param.Size = 15;
             param.IsNullable = true;
             param.SourceColumn = "U_SALI_ID_DOG";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "LOKACIJA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "LOKACIJA";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID_DOG";
@@ -10944,6 +10994,14 @@ namespace KCOT.DataSetTableAdapters {
             param.SourceColumn = "U_SALI_ID_DOG";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_LOKACIJA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "LOKACIJA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10960,7 +11018,7 @@ namespace KCOT.DataSetTableAdapters {
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID_DOG, NAZIV, GODINA, KONTAKT_IME, KONTAKT_PRZ, KONTAKT_BROJ, U_GALERIJI_" +
-                "ID_DOG, U_SALI_ID_DOG FROM IMOLA.DOGADJAJ";
+                "ID_DOG, U_SALI_ID_DOG, LOKACIJA FROM IMOLA.DOGADJAJ";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -11021,7 +11079,7 @@ namespace KCOT.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_ID_DOG, string Original_NAZIV, decimal Original_GODINA, string Original_KONTAKT_IME, string Original_KONTAKT_PRZ, string Original_KONTAKT_BROJ, string Original_U_GALERIJI_ID_DOG, string Original_U_SALI_ID_DOG) {
+        public virtual int Delete(string Original_ID_DOG, string Original_NAZIV, decimal Original_GODINA, string Original_KONTAKT_IME, string Original_KONTAKT_PRZ, string Original_KONTAKT_BROJ, string Original_U_GALERIJI_ID_DOG, string Original_U_SALI_ID_DOG, string Original_LOKACIJA) {
             if ((Original_ID_DOG == null)) {
                 throw new global::System.ArgumentNullException("Original_ID_DOG");
             }
@@ -11075,6 +11133,12 @@ namespace KCOT.DataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_U_SALI_ID_DOG));
             }
+            if ((Original_LOKACIJA == null)) {
+                throw new global::System.ArgumentNullException("Original_LOKACIJA");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((string)(Original_LOKACIJA));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -11095,7 +11159,7 @@ namespace KCOT.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string ID_DOG, string NAZIV, decimal GODINA, string KONTAKT_IME, string KONTAKT_PRZ, string KONTAKT_BROJ, string U_GALERIJI_ID_DOG, string U_SALI_ID_DOG) {
+        public virtual int Insert(string ID_DOG, string NAZIV, decimal GODINA, string KONTAKT_IME, string KONTAKT_PRZ, string KONTAKT_BROJ, string U_GALERIJI_ID_DOG, string U_SALI_ID_DOG, string LOKACIJA) {
             if ((ID_DOG == null)) {
                 throw new global::System.ArgumentNullException("ID_DOG");
             }
@@ -11139,6 +11203,12 @@ namespace KCOT.DataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = ((string)(U_SALI_ID_DOG));
             }
+            if ((LOKACIJA == null)) {
+                throw new global::System.ArgumentNullException("LOKACIJA");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(LOKACIJA));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -11168,6 +11238,7 @@ namespace KCOT.DataSetTableAdapters {
                     string KONTAKT_BROJ, 
                     string U_GALERIJI_ID_DOG, 
                     string U_SALI_ID_DOG, 
+                    string LOKACIJA, 
                     string Original_ID_DOG, 
                     string Original_NAZIV, 
                     decimal Original_GODINA, 
@@ -11175,7 +11246,8 @@ namespace KCOT.DataSetTableAdapters {
                     string Original_KONTAKT_PRZ, 
                     string Original_KONTAKT_BROJ, 
                     string Original_U_GALERIJI_ID_DOG, 
-                    string Original_U_SALI_ID_DOG) {
+                    string Original_U_SALI_ID_DOG, 
+                    string Original_LOKACIJA) {
             if ((ID_DOG == null)) {
                 throw new global::System.ArgumentNullException("ID_DOG");
             }
@@ -11219,58 +11291,70 @@ namespace KCOT.DataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(U_SALI_ID_DOG));
             }
+            if ((LOKACIJA == null)) {
+                throw new global::System.ArgumentNullException("LOKACIJA");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(LOKACIJA));
+            }
             if ((Original_ID_DOG == null)) {
                 throw new global::System.ArgumentNullException("Original_ID_DOG");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_ID_DOG));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_ID_DOG));
             }
             if ((Original_NAZIV == null)) {
                 throw new global::System.ArgumentNullException("Original_NAZIV");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_NAZIV));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_NAZIV));
             }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(Original_GODINA));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Original_GODINA));
             if ((Original_KONTAKT_IME == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_KONTAKT_IME));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_KONTAKT_IME));
             }
             if ((Original_KONTAKT_PRZ == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_KONTAKT_PRZ));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_KONTAKT_PRZ));
             }
             if ((Original_KONTAKT_BROJ == null)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_KONTAKT_BROJ));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_KONTAKT_BROJ));
             }
             if ((Original_U_GALERIJI_ID_DOG == null)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_U_GALERIJI_ID_DOG));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_U_GALERIJI_ID_DOG));
             }
             if ((Original_U_SALI_ID_DOG == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_U_SALI_ID_DOG));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_U_SALI_ID_DOG));
+            }
+            if ((Original_LOKACIJA == null)) {
+                throw new global::System.ArgumentNullException("Original_LOKACIJA");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_LOKACIJA));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -11292,8 +11376,25 @@ namespace KCOT.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NAZIV, decimal GODINA, string KONTAKT_IME, string KONTAKT_PRZ, string KONTAKT_BROJ, string U_GALERIJI_ID_DOG, string U_SALI_ID_DOG, string Original_ID_DOG, string Original_NAZIV, decimal Original_GODINA, string Original_KONTAKT_IME, string Original_KONTAKT_PRZ, string Original_KONTAKT_BROJ, string Original_U_GALERIJI_ID_DOG, string Original_U_SALI_ID_DOG) {
-            return this.Update(Original_ID_DOG, NAZIV, GODINA, KONTAKT_IME, KONTAKT_PRZ, KONTAKT_BROJ, U_GALERIJI_ID_DOG, U_SALI_ID_DOG, Original_ID_DOG, Original_NAZIV, Original_GODINA, Original_KONTAKT_IME, Original_KONTAKT_PRZ, Original_KONTAKT_BROJ, Original_U_GALERIJI_ID_DOG, Original_U_SALI_ID_DOG);
+        public virtual int Update(
+                    string NAZIV, 
+                    decimal GODINA, 
+                    string KONTAKT_IME, 
+                    string KONTAKT_PRZ, 
+                    string KONTAKT_BROJ, 
+                    string U_GALERIJI_ID_DOG, 
+                    string U_SALI_ID_DOG, 
+                    string LOKACIJA, 
+                    string Original_ID_DOG, 
+                    string Original_NAZIV, 
+                    decimal Original_GODINA, 
+                    string Original_KONTAKT_IME, 
+                    string Original_KONTAKT_PRZ, 
+                    string Original_KONTAKT_BROJ, 
+                    string Original_U_GALERIJI_ID_DOG, 
+                    string Original_U_SALI_ID_DOG, 
+                    string Original_LOKACIJA) {
+            return this.Update(Original_ID_DOG, NAZIV, GODINA, KONTAKT_IME, KONTAKT_PRZ, KONTAKT_BROJ, U_GALERIJI_ID_DOG, U_SALI_ID_DOG, LOKACIJA, Original_ID_DOG, Original_NAZIV, Original_GODINA, Original_KONTAKT_IME, Original_KONTAKT_PRZ, Original_KONTAKT_BROJ, Original_U_GALERIJI_ID_DOG, Original_U_SALI_ID_DOG, Original_LOKACIJA);
         }
     }
     

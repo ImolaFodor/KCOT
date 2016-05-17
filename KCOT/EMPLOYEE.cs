@@ -12,19 +12,13 @@ namespace KCOT
     using System;
     using System.Collections.Generic;
     
-    public partial class PROJEKAT
+    public partial class EMPLOYEE
     {
-        public PROJEKAT()
-        {
-            this.RADPROJs = new HashSet<RADPROJ>();
-        }
+        public int EMPLOYEE_NUMBER { get; set; }
+        public string EMPLOYEE_NAME { get; set; }
+        public Nullable<int> DEPARTMENT_ID { get; set; }
+        public Nullable<int> SALARY { get; set; }
     
-        public decimal SPR { get; set; }
-        public decimal RUK { get; set; }
-        public string NAP { get; set; }
-        public string NAR { get; set; }
-    
-        public virtual RADNIK RADNIK { get; set; }
-        public virtual ICollection<RADPROJ> RADPROJs { get; set; }
+        public virtual DEPARTMENT DEPARTMENT { get; set; }
     }
 }

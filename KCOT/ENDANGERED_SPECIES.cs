@@ -12,19 +12,10 @@ namespace KCOT
     using System;
     using System.Collections.Generic;
     
-    public partial class PROJEKAT
+    public partial class ENDANGERED_SPECIES
     {
-        public PROJEKAT()
-        {
-            this.RADPROJs = new HashSet<RADPROJ>();
-        }
-    
-        public decimal SPR { get; set; }
-        public decimal RUK { get; set; }
-        public string NAP { get; set; }
-        public string NAR { get; set; }
-    
-        public virtual RADNIK RADNIK { get; set; }
-        public virtual ICollection<RADPROJ> RADPROJs { get; set; }
+        public short SPECIES_ID { get; set; }
+        public string COMMON_NAME { get; set; }
+        public string SCIENTIFIC_NAME { get; set; }
     }
 }
